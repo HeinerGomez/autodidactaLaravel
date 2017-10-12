@@ -17,7 +17,7 @@
             {{csrf_field()}}
             <input type="text" name="message" class="form-control" placeholder="¿ Que estas pensando ?" />
             <div class="form-control-feedback">
-                @if ($errors->any()) 
+                @if ($errors->any())
                     @foreach($errors->get('message') as $error)
                         {{$error}}
                     @endForeach
@@ -38,5 +38,10 @@
     @empty
         <p>No se encontraron imagenes :( !</p>
     @endforelse
+    @if (count($messages) )
+        <div class="mt-2 mx-auto">
+            {{$messages->links('pagination::bootstrap-4')}}
+        </div>
+    @endif
 </div>
 @endsection
